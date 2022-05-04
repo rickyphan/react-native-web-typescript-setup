@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "build": "react-scripts build",
     "ios": "react-native run-ios",
+    "web": "react-scripts start",
+    "build": "react-scripts build",
+    "clean": "rm -rf ./build ./node_modules ./dist",
+    "format": "prettier --check ./src ./__tests__",
+    "lint": "eslint ./src ./__tests__",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint .",
-    "web": "react-scripts start"
+    "test": "jest"
   },
   "dependencies": {
     "react": "17.0.2",
@@ -40,16 +42,14 @@
     "metro-react-native-babel-preset": "^0.67.0",
     "react-test-renderer": "17.0.2",
     "ts-jest": "^27.1.4",
-    "typescript": "~4.1.0"
+    "typescript": ">=3.3.1 <4.1.0"
   },
   "jest": {
-    "preset": "react-native-web",
-    "transform": {
-      "^.+\\.ts?$": "ts-jest",
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.jest.json"
+      }
     },
-    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -58,11 +58,13 @@
       "json",
       "node"
     ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
-      }
-    }
+    "preset": "react-native-web",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest",
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
   },
   "browserslist": {
     "production": [

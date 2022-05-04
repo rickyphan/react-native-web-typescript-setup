@@ -74,6 +74,6 @@ npx react-native start --reset-cache
 ```
 
 ```
-rm -rf ./build ./node_modules 
+yarn clean
 yarn install
 ```
