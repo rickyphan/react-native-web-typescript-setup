@@ -54,6 +54,13 @@ yarn android
 
 # Development
 
+## Format
+
+```
+yarn format
+```
+
+
 ## Lint
 
 ```
